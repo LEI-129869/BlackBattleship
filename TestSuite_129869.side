@@ -1,0 +1,352 @@
+{
+  "id": "abb59b5e-50fe-462b-b53d-9807e3cc0e0d",
+  "version": "2.0",
+  "name": "TestSuite_129869",
+  "url": "https://papergames.io",
+  "tests": [{
+    "id": "cd24d3bc-eb40-4765-8689-bd557254a2af",
+    "name": "UserStoryTest1\t",
+    "commands": [{
+      "id": "e5a9b161-9f60-45c7-bd59-f94bcfdf5229",
+      "comment": "",
+      "command": "open",
+      "target": "/en/battleship",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "41a3245a-5212-49a8-be46-f7fca0c9e095",
+      "comment": "Esperar que pagina abra",
+      "command": "waitForElementVisible",
+      "target": "xpath=//h1[normalize-space()='Battleship Online']",
+      "targets": [],
+      "value": "10000"
+    }, {
+      "id": "09e70a86-642d-49b0-8059-d541aef86d56",
+      "comment": "Cliquei no botão de jogar contra robot",
+      "command": "click",
+      "target": "xpath=//button[@type='button' and .//span[text()='Play vs robot']]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5116fc9-6b0c-43dc-a46a-a36f154a41bb",
+      "comment": "aguardar que pedido de username aparece",
+      "command": "waitForElementPresent",
+      "target": "css=input[formcontrolname='username']",
+      "targets": [],
+      "value": "5000"
+    }, {
+      "id": "b8158eeb-4a22-46e7-9464-417a57897d83",
+      "comment": "Verificar se pedido de username aparece",
+      "command": "assertElementPresent",
+      "target": "css=input[formcontrolname='username']",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "caf9a305-6ad2-4b2d-98c5-0d2bb5e385e3",
+    "name": "UserStoryTest2",
+    "commands": [{
+      "id": "d77ba3a1-9411-4d0a-84cb-8be83c6f3d84",
+      "comment": "",
+      "command": "open",
+      "target": "/en/battleship",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3016258e-63c8-45ee-8ea5-194496e1e0e0",
+      "comment": "Esperar que pagina abra",
+      "command": "waitForElementVisible",
+      "target": "xpath=//h1[normalize-space()='Battleship Online']",
+      "targets": [],
+      "value": "10000"
+    }, {
+      "id": "781d1fe0-1918-4bdc-82af-22260b83d8ff",
+      "comment": "Cliquei no botão de jogar contra robot",
+      "command": "click",
+      "target": "xpath=//button[@type='button' and .//span[text()='Play vs robot']]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6a14a4a9-9329-4b3e-99fb-fc615ab6f675",
+      "comment": "aguardar que pedido de username aparece",
+      "command": "waitForElementPresent",
+      "target": "css=input[formcontrolname='username']",
+      "targets": [],
+      "value": "5000"
+    }, {
+      "id": "712a36b0-ae4e-4db7-ab3d-fb71721ae431",
+      "comment": "Inserir username",
+      "command": "executeScript",
+      "target": "var el = document.querySelector(\"input[formcontrolname='username']\"); el.value = 'Teste'; el.dispatchEvent(new Event('input', {bubbles: true})); el.dispatchEvent(new Event('change', {bubbles: true}));",
+      "targets": [],
+      "value": "x"
+    }, {
+      "id": "2cec3891-763c-475f-9280-c560540b523c",
+      "comment": "Clicar no botao \"continue\" para prosseguir com a insercao de username e poder jogar identificado",
+      "command": "click",
+      "target": "xpath=//button[@type='submit' and text()='Continue']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "81c5fa48-3268-4565-af07-5dd3bae77c8a",
+      "comment": "Verificar se jogo comecou",
+      "command": "waitForElementVisible",
+      "target": "xpath=//span[@appprofileopener]",
+      "targets": [],
+      "value": "5000"
+    }, {
+      "id": "ded00183-e65d-4612-be2c-4c09f40c9db2",
+      "comment": "Verificar se nome foi submetido de forma correta",
+      "command": "assertText",
+      "target": "xpath=//span[@appprofileopener and text()='Teste']",
+      "targets": [],
+      "value": "Teste"
+    }]
+  }, {
+    "id": "9e8e689d-7b9d-4b63-bb9e-924023317887",
+    "name": "UserStoryTest5",
+    "commands": [{
+      "id": "1e124a3b-e170-44e5-bb5d-ace864812bd3",
+      "comment": "",
+      "command": "open",
+      "target": "/en/battleship",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3eda906d-2799-4493-93b3-51849882fd90",
+      "comment": "Esperar que pagina abra",
+      "command": "waitForElementVisible",
+      "target": "xpath=//h1[normalize-space()='Battleship Online']",
+      "targets": [],
+      "value": "10000"
+    }, {
+      "id": "d954b2c2-c54b-4f9a-b5c8-4d208b1a648d",
+      "comment": "Recusar consentimento de utilização de dados, caso apareça",
+      "command": "executeScript",
+      "target": "document.querySelector('button.fc-cta-do-not-consent')?.click();",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c74bde93-2c69-405f-9d2a-91c739e974f1",
+      "comment": "Cliquei no botão de jogar contra robot",
+      "command": "click",
+      "target": "xpath=//button[@type='button' and .//span[text()='Play vs robot']]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fe79c843-4944-4dfa-b727-70c7848c24d6",
+      "comment": "aguardar que pedido de username aparece",
+      "command": "waitForElementPresent",
+      "target": "css=input[formcontrolname='username']",
+      "targets": [],
+      "value": "5000"
+    }, {
+      "id": "15dfd7c2-e663-4808-99e0-8e60ef4a6dc9",
+      "comment": "Inserir username",
+      "command": "executeScript",
+      "target": "var el = document.querySelector(\"input[formcontrolname='username']\"); el.value = 'Teste'; el.dispatchEvent(new Event('input', {bubbles: true})); el.dispatchEvent(new Event('change', {bubbles: true}));",
+      "targets": [],
+      "value": "x"
+    }, {
+      "id": "ef793121-ca97-4acd-a84b-d2ff93fdfaaa",
+      "comment": "Clicar no botao \"continue\" para prosseguir com a insercao de username e poder jogar identificado",
+      "command": "click",
+      "target": "xpath=//button[@type='submit' and text()='Continue']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1729d8f8-aead-48f0-aadc-afbbfc8d89dd",
+      "comment": "Verificar se jogo comecou",
+      "command": "waitForElementVisible",
+      "target": "css=.btn.btn-outline-dark.d-flex.align-items-center.ng-star-inserted",
+      "targets": [],
+      "value": "5000"
+    }, {
+      "id": "d9b6b2d4-8198-4908-8a4d-b052d20f8550",
+      "comment": "Verificar se nome foi submetido de forma correta",
+      "command": "assertText",
+      "target": "xpath=//span[@appprofileopener and text()='Teste']",
+      "targets": [],
+      "value": "Teste"
+    }, {
+      "id": "c23d7c51-84a3-4247-8b04-0196cbc09d89",
+      "comment": "Espera que seja a vez para poder jogar",
+      "command": "waitForElementPresent",
+      "target": "css=div.attack-text",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "6de88c7c-dc75-424f-bfb1-166d0da3e891",
+      "comment": "Mandar um tiro numa celula pre definida",
+      "command": "click",
+      "target": "xpath=(//table[contains(@class,'table-board')])[2]//td[contains(concat(' ',@class,' '),' cell-4-2 ')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "33514355-29f3-4be6-b512-1070bee291f1",
+      "comment": "Esperar por alteracao no tabuleiro",
+      "command": "waitForElementPresent",
+      "target": "xpath=(//table[contains(@class,'table-board')])[2]//td[contains(concat(' ',@class,' '),' cell-4-2 ')]//*[contains(concat(' ',@class,' '),' no-hit ') or contains(concat(' ',@class,' '),' hit ')]",
+      "targets": [],
+      "value": "15000"
+    }, {
+      "id": "0b5787e3-2ae2-444f-98e3-059e092f63ad",
+      "comment": "Verificar mudanca no tabuleiro",
+      "command": "assertElementPresent",
+      "target": "xpath=(//table[contains(@class,'table-board')])[2]//td[contains(concat(' ',@class,' '),' cell-4-2 ')]//*[contains(concat(' ',@class,' '),' no-hit ') or contains(concat(' ',@class,' '),' hit ')]",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "1e66dcd3-8df7-4111-b27f-ab8ff5d5fe5c",
+    "name": "UserStoryTest6",
+    "commands": [{
+      "id": "80249dd6-3a14-4402-b9ba-e6ee06d5ff4b",
+      "comment": "",
+      "command": "open",
+      "target": "/en/battleship",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a0fcc05c-897b-4b70-a486-6b77af1a81a9",
+      "comment": "Esperar que pagina abra",
+      "command": "waitForElementVisible",
+      "target": "xpath=//h1[normalize-space()='Battleship Online']",
+      "targets": [],
+      "value": "10000"
+    }, {
+      "id": "002889ca-8dc5-4a2b-86d7-93b4440cf13f",
+      "comment": "Cliquei no botão de jogar contra robot",
+      "command": "click",
+      "target": "xpath=//button[@type='button' and .//span[text()='Play vs robot']]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5f7cec6b-bdd5-4bf9-8ec8-7e5079c66793",
+      "comment": "aguardar que pedido de username aparece",
+      "command": "waitForElementPresent",
+      "target": "css=input[formcontrolname='username']",
+      "targets": [],
+      "value": "5000"
+    }, {
+      "id": "20a5d34f-9f18-4cd4-a736-8c30cda9df99",
+      "comment": "Inserir username",
+      "command": "executeScript",
+      "target": "var el = document.querySelector(\"input[formcontrolname='username']\"); el.value = 'Teste'; el.dispatchEvent(new Event('input', {bubbles: true})); el.dispatchEvent(new Event('change', {bubbles: true}));",
+      "targets": [],
+      "value": "x"
+    }, {
+      "id": "6ede56cf-dea2-46b9-9abf-1fe04f2a33e8",
+      "comment": "Clicar no botao \"continue\" para prosseguir com a insercao de username e poder jogar identificado",
+      "command": "click",
+      "target": "xpath=//button[@type='submit' and text()='Continue']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "515a0f38-0085-49c4-8073-bac60a769661",
+      "comment": "Verificar se jogo comecou",
+      "command": "waitForElementVisible",
+      "target": "css=.btn.btn-outline-dark.d-flex.align-items-center.ng-star-inserted",
+      "targets": [],
+      "value": "5000"
+    }, {
+      "id": "4282607f-7530-40ac-ad47-4bbe1f6b4c50",
+      "comment": "Verificar se nome foi submetido de forma correta",
+      "command": "assertText",
+      "target": "xpath=//span[@appprofileopener and text()='Teste']",
+      "targets": [],
+      "value": "Teste"
+    }, {
+      "id": "5390474f-8fcc-4039-91e7-9019e5ad92f3",
+      "comment": "Aguarda para verificar se a vez muda, i.e verificar se ha informacao de quem e a vez",
+      "command": "waitForElementPresent",
+      "target": "css=div.attack-text",
+      "targets": [],
+      "value": "15000"
+    }]
+  }, {
+    "id": "c84cb715-854c-4014-a4cd-114d09f86226",
+    "name": "UserStoryTest13",
+    "commands": [{
+      "id": "1c3a6b96-3d91-4af5-bdef-c4c5d2f49915",
+      "comment": "",
+      "command": "open",
+      "target": "/en/battleship",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7870568d-b3c4-48d5-ba0f-ea5ee053b946",
+      "comment": "Esperar que pagina abra",
+      "command": "waitForElementVisible",
+      "target": "xpath=//h1[normalize-space()='Battleship Online']",
+      "targets": [],
+      "value": "10000"
+    }, {
+      "id": "393904b3-da89-4ce1-8e4a-d4b70a515910",
+      "comment": "Cliquei no botão de settings",
+      "command": "click",
+      "target": "xpath=//button[@mattooltip='Settings']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "08c87b01-1b04-40c6-b647-7e141141910a",
+      "comment": "Esperar que abra",
+      "command": "waitForElementVisible",
+      "target": "xpath=//header[.//h2[normalize-space()='Settings']]",
+      "targets": [],
+      "value": "5000"
+    }, {
+      "id": "caf8c03c-962c-4577-8771-ff7d1a0b93a6",
+      "comment": "Verificar se menu de settings apareceu",
+      "command": "assertElementPresent",
+      "target": "xpath=//header[.//h2[normalize-space()='Settings']]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "20dad2b1-a4cc-4b0b-b321-4377f4a921e1",
+      "comment": "Clicar no botao de linguagem",
+      "command": "click",
+      "target": "css=button.mat-mdc-menu-trigger[aria-haspopup='menu']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "454d21c8-5e57-481e-96c8-6cdd54e43bcc",
+      "comment": "Esperar que apareca o menu de linguas",
+      "command": "waitForElementVisible",
+      "target": "css=div[role='menu']",
+      "targets": [],
+      "value": "5000"
+    }, {
+      "id": "7bbbc5c5-7603-44e3-8ca6-08983df23c14",
+      "comment": "Selecionar o espanhol",
+      "command": "click",
+      "target": "xpath=//div[@role='menu']//button[@role='menuitem'][.//span[normalize-space()='Español']]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a7b10cc7-1c55-47e7-945e-1995eeb1c733",
+      "comment": "Script para detetar mudanca de lingua",
+      "command": "executeScript",
+      "target": "return window.location.pathname.startsWith('/es/')",
+      "targets": [],
+      "value": "idiomaMudou"
+    }, {
+      "id": "84e608dd-cb0a-4672-9a5a-50ef1fe1e327",
+      "comment": "Verifiquei que o idioma mudou para espanhol",
+      "command": "assert",
+      "target": "idiomaMudou",
+      "targets": [],
+      "value": "true"
+    }]
+  }],
+  "suites": [{
+    "id": "8157cf4f-bb85-4aa1-baa8-985e42f270fd",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["cd24d3bc-eb40-4765-8689-bd557254a2af"]
+  }],
+  "urls": ["https://papergames.io/en/", "https://papergames.io/en/battleship", "https://papergames.io/"],
+  "plugins": []
+}

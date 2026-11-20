@@ -5,9 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.logging.Logger;
-import java.util.logging.Level;
-
 // page_url = https://www.jetbrains.com/
 public class MainPage {
 

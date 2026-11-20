@@ -32,6 +32,11 @@
         <scope>provided</scope>
     </dependency>
     <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>4.27.0</version>
+    </dependency>
+    <dependency>
         <groupId>com.codeborne</groupId>
         <artifactId>selenide</artifactId>
         <version>7.6.0</version>
