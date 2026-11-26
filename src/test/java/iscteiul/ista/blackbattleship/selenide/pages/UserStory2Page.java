@@ -15,6 +15,9 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class UserStory2Page {
     private static final String URL = "https://papergames.io/en/battleship";
 
+    @FindBy(css = "button.fc-cta-do-not-consent")
+    private SelenideElement doNotConsentButton;
+
     @FindBy(xpath = "//h1[normalize-space()='Battleship Online']")
     private SelenideElement pageHeading;
 
@@ -34,6 +37,7 @@ public class UserStory2Page {
     @Step("Abrir a página Battleship")
     public UserStory2Page openBattleship() {
         open(URL);
+        doNotConsentButton.shouldBe(visible).click();
         pageHeading.shouldBe(visible);
         sleep(400);
         return this;
