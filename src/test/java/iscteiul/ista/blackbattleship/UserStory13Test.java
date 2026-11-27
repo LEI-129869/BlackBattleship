@@ -1,16 +1,17 @@
+
 package iscteiul.ista.blackbattleship;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import iscteiul.ista.blackbattleship.pages.BattleshipHomePage;
+import iscteiul.ista.blackbattleship.pages.SettingsPage;
 
-/**
- * Page Object for Selenium IDE scenario.
- */
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,15 +19,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-/**
- * JUnit test for UserStoryTest13.
- * Verifies that selecting Español changes the application route to Spanish.
- */
 public class UserStory13Test {
-    private WebDriver driver;
-    private UserStory13 page;
 
-    /** Starts a fresh Chrome session before each test. */
+    private WebDriver driver;
+
+    private BattleshipHomePage homePage;
+    private SettingsPage settingsPage;
+
     @BeforeEach
     void setUp() {
         driver = new ChromeDriver();
@@ -38,15 +37,16 @@ public class UserStory13Test {
 
         WebElement doNotConsent = wait.until(
                 ExpectedConditions.elementToBeClickable(
-                        By.cssSelector("button.fc-cta-do-not-consent")
+                        By.cssSelector("button.fc-cta-consent")
                 )
         );
+
         doNotConsent.click();
 
-        page = new UserStory13(driver);
+        homePage = new BattleshipHomePage(driver);
+        settingsPage = new SettingsPage(driver);
     }
 
-    /** Closes the browser after each test. */
     @AfterEach
     void tearDown() {
         if (driver != null) {
@@ -54,13 +54,18 @@ public class UserStory13Test {
         }
     }
 
-    /** Opens Settings, selects Español and checks that the Spanish route is active. */
     @Test
     void shouldChangeApplicationLanguageToSpanish() {
-        page.openBattleship();
-        page.openSettings();
-        page.openLanguageMenu();
-        page.selectSpanish();
-        assertTrue(page.isSpanishLanguageActive(), "A aplicação deveria estar no idioma espanhol.");
+
+        homePage.open();
+
+        settingsPage.openSettings();
+        settingsPage.openLanguageMenu();
+        settingsPage.selectSpanish();
+
+        assertTrue(
+                settingsPage.isSpanishLanguageActive(),
+                "A aplicação deveria estar no idioma espanhol."
+        );
     }
 }

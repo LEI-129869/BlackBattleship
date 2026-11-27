@@ -1,5 +1,6 @@
 package iscteiul.ista.blackbattleship;
 
+import iscteiul.ista.blackbattleship.pages.MainPage;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;

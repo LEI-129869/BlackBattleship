@@ -1,16 +1,14 @@
 package iscteiul.ista.blackbattleship;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import iscteiul.ista.blackbattleship.pages.BattleshipHomePage;
+import iscteiul.ista.blackbattleship.pages.RobotGamePage;
 
-/**
- * Page Object for Selenium IDE scenario.
- */
+import iscteiul.ista.blackbattleship.pages.SettingsPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,15 +16,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-/**
- * JUnit test for UserStoryTest1.
- * Verifies that the robot-game form exposes the username field.
- */
-public class UserStory1Test {
-    private WebDriver driver;
-    private UserStory1 page;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-    /** Starts a fresh Chrome session before each test. */
+public class UserStory1Test {
+
+    private WebDriver driver;
+
     @BeforeEach
     void setUp() {
         driver = new ChromeDriver();
@@ -38,15 +33,13 @@ public class UserStory1Test {
 
         WebElement doNotConsent = wait.until(
                 ExpectedConditions.elementToBeClickable(
-                        By.cssSelector("button.fc-cta-do-not-consent")
+                        By.cssSelector("button.fc-cta-consent")
                 )
         );
-        doNotConsent.click();
 
-        page = new UserStory1(driver);
+        doNotConsent.click();
     }
 
-    /** Closes the browser after each test. */
     @AfterEach
     void tearDown() {
         if (driver != null) {
@@ -54,11 +47,18 @@ public class UserStory1Test {
         }
     }
 
-    /** Checks that opening the robot form makes the username field available. */
     @Test
-    void shouldDisplayUsernameFieldWhenPlayingAgainstRobot() {
-        page.openBattleship();
-        page.openRobotForm();
-        assertTrue(page.isUsernameInputPresent(), "O campo username deveria estar presente.");
+    public void shouldOpenRobotGameForm() {
+
+        BattleshipHomePage homePage =
+                new BattleshipHomePage(driver);
+
+        RobotGamePage robotGamePage =
+                new RobotGamePage(driver);
+
+        homePage.open();
+        homePage.clickPlayVsRobot();
+
+        assertTrue(robotGamePage.isUsernameInputPresent());
     }
 }

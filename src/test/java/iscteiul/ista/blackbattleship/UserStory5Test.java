@@ -1,4 +1,9 @@
+
 package iscteiul.ista.blackbattleship;
+
+import iscteiul.ista.blackbattleship.pages.BattleshipHomePage;
+import iscteiul.ista.blackbattleship.pages.RobotGamePage;
+import iscteiul.ista.blackbattleship.pages.GamePage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,15 +20,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
 
-/**
- * JUnit test for UserStoryTest5.
- * Verifies that firing at opponent-board cell 4-2 produces a visible result.
- */
 public class UserStory5Test {
-    private WebDriver driver;
-    private UserStory5 page;
 
-    /** Starts a fresh Chrome session before each test. */
+    private WebDriver driver;
+
+    private BattleshipHomePage homePage;
+    private RobotGamePage robotGamePage;
+    private GamePage gamePage;
+
     @BeforeEach
     void setUp() {
         driver = new ChromeDriver();
@@ -35,16 +39,17 @@ public class UserStory5Test {
 
         WebElement doNotConsent = wait.until(
                 ExpectedConditions.elementToBeClickable(
-                        By.cssSelector("button.fc-cta-do-not-consent")
+                        By.cssSelector("button.fc-cta-consent")
                 )
         );
 
         doNotConsent.click();
 
-        page = new UserStory5(driver);
+        homePage = new BattleshipHomePage(driver);
+        robotGamePage = new RobotGamePage(driver);
+        gamePage = new GamePage(driver);
     }
 
-    /** Closes the browser after each test. */
     @AfterEach
     void tearDown() {
         if (driver != null) {
@@ -52,16 +57,23 @@ public class UserStory5Test {
         }
     }
 
-    /** Starts a game, fires at cell 4-2 and checks that a result marker appears. */
     @Test
     void shouldShowResultAfterFiringAtCellFourTwo() {
-        page.openBattleship();
-        page.startRobotGame("Teste");
-        page.waitForPlayerTurn();
 
-        page.fireAtCellFourTwo();
+        homePage.open();
+        homePage.clickPlayVsRobot();
 
-        assertTrue(page.hasShotResult(),
-                "O disparo deveria apresentar hit ou no-hit.");
+        robotGamePage.enterUsername("Teste");
+        robotGamePage.continueToGame();
+
+        gamePage.waitForGameToLoad();
+        gamePage.waitForPlayerTurn();
+
+        gamePage.fireAtCellFourTwo();
+
+        assertTrue(
+                gamePage.hasShotResult(),
+                "O disparo deveria apresentar hit ou no-hit."
+        );
     }
 }
